@@ -23,6 +23,8 @@
 		DC829AF622510E9900E01FA7 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC829AF522510E9900E01FA7 /* HomeCollectionViewController.swift */; };
 		DC829AF8225112E900E01FA7 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC829AF7225112E900E01FA7 /* MyCollectionViewCell.swift */; };
 		DCADE2B7225125C300936DF2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADE2B6225125C300936DF2 /* DetailsViewController.swift */; };
+		DCADE2BC22514A9000936DF2 /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADE2BB22514A9000936DF2 /* Trailer.swift */; };
+		DCADE2BE22514ABA00936DF2 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADE2BD22514ABA00936DF2 /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		DC829AF522510E9900E01FA7 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		DC829AF7225112E900E01FA7 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		DCADE2B6225125C300936DF2 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		DCADE2BB22514A9000936DF2 /* Trailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
+		DCADE2BD22514ABA00936DF2 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 			children = (
 				DC829AEE22510A0E00E01FA7 /* MoviesData.swift */,
 				DC829AF022510A1F00E01FA7 /* Movie.swift */,
+				DCADE2BB22514A9000936DF2 /* Trailer.swift */,
+				DCADE2BD22514ABA00936DF2 /* Video.swift */,
 			);
 			path = pojos;
 			sourceTree = "<group>";
@@ -423,7 +429,9 @@
 				DC829AF8225112E900E01FA7 /* MyCollectionViewCell.swift in Sources */,
 				DC829AF622510E9900E01FA7 /* HomeCollectionViewController.swift in Sources */,
 				DC829AEF22510A0E00E01FA7 /* MoviesData.swift in Sources */,
+				DCADE2BC22514A9000936DF2 /* Trailer.swift in Sources */,
 				DC217DC7224FB99700DB26BB /* AppDelegate.swift in Sources */,
+				DCADE2BE22514ABA00936DF2 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

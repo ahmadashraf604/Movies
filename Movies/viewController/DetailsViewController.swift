@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class DetailsViewController: UIViewController {
     var movie : Movie!
     
     @IBOutlet weak var titleDetails: UILabel!
+    @IBOutlet weak var releaseYearDetails: UILabel!
+    @IBOutlet weak var imageDetails: UIImageView!
+    @IBOutlet weak var reviewsDetails: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,11 @@ class DetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleDetails.text = movie.title
+        releaseYearDetails.text = movie.releaseDate
+        reviewsDetails.text = movie.overview
+        let imageUrl = URL(string: "https://image.tmdb.org/t/p/w185/\(movie.posterPath)")
+        imageDetails.sd_setImage(with: imageUrl, completed: nil)
+        
     }
 
   

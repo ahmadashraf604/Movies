@@ -68,29 +68,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="movie titledsfsdfsdfsdfsdgfsdgregergergergergergergergergergergergergjkhsdkhsdaghjkaghjkghsdjhgjshjhsjghjdfhgjdfsg" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-d1-gKA">
-                                <rect key="frame" x="16" y="230" width="343" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DzQ-mQ-r2V">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="199" id="OyF-hm-WAK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="movie title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-d1-gKA">
+                                <rect key="frame" x="16" y="207" width="343" height="24"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DzQ-mQ-r2V">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reviews" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6p-Ax-jpz">
+                                <rect key="frame" x="16" y="271" width="343" height="24"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z0d-M9-Pb3">
+                                <rect key="frame" x="16" y="303" width="343" height="356"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release year" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMF-OM-CZD">
+                                <rect key="frame" x="16" y="239" width="343" height="24"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ap5-d1-gKA" firstAttribute="top" secondItem="DzQ-mQ-r2V" secondAttribute="bottom" constant="16" id="1KX-dP-K51"/>
-                            <constraint firstItem="DzQ-mQ-r2V" firstAttribute="top" secondItem="Mc9-5d-kra" secondAttribute="top" id="KEW-YE-MqZ"/>
+                            <constraint firstItem="Mc9-5d-kra" firstAttribute="trailing" secondItem="N6p-Ax-jpz" secondAttribute="trailing" constant="16" id="2Pw-K5-bnm"/>
+                            <constraint firstItem="z0d-M9-Pb3" firstAttribute="top" secondItem="N6p-Ax-jpz" secondAttribute="bottom" constant="8" id="K3Q-UY-cIb"/>
+                            <constraint firstItem="iMF-OM-CZD" firstAttribute="leading" secondItem="Mc9-5d-kra" secondAttribute="leading" constant="16" id="SmH-JI-LeB"/>
                             <constraint firstItem="Mc9-5d-kra" firstAttribute="trailing" secondItem="ap5-d1-gKA" secondAttribute="trailing" constant="16" id="Sta-z4-Kwv"/>
-                            <constraint firstItem="DzQ-mQ-r2V" firstAttribute="leading" secondItem="Mc9-5d-kra" secondAttribute="leading" id="XCA-WU-ezs"/>
-                            <constraint firstItem="ap5-d1-gKA" firstAttribute="leading" secondItem="Mc9-5d-kra" secondAttribute="leading" constant="16" id="f3R-6P-FFX"/>
-                            <constraint firstItem="Mc9-5d-kra" firstAttribute="trailing" secondItem="DzQ-mQ-r2V" secondAttribute="trailing" id="pAv-eP-btL"/>
-                            <constraint firstItem="DzQ-mQ-r2V" firstAttribute="top" secondItem="Mc9-5d-kra" secondAttribute="top" id="vzN-ll-yCs"/>
+                            <constraint firstAttribute="trailing" secondItem="iMF-OM-CZD" secondAttribute="trailing" constant="16" id="WHc-Zf-sGv"/>
+                            <constraint firstItem="ap5-d1-gKA" firstAttribute="top" secondItem="DzQ-mQ-r2V" secondAttribute="bottom" constant="8" id="XYY-cZ-oQF"/>
+                            <constraint firstItem="iMF-OM-CZD" firstAttribute="top" secondItem="ap5-d1-gKA" secondAttribute="bottom" constant="8" id="ZSo-qm-Rb5"/>
+                            <constraint firstItem="Mc9-5d-kra" firstAttribute="bottom" secondItem="z0d-M9-Pb3" secondAttribute="bottom" constant="8" id="dkz-Uf-XJ0"/>
+                            <constraint firstItem="ap5-d1-gKA" firstAttribute="leading" secondItem="reG-wo-oQF" secondAttribute="leading" constant="16" id="eLL-X9-xKB"/>
+                            <constraint firstItem="N6p-Ax-jpz" firstAttribute="top" secondItem="iMF-OM-CZD" secondAttribute="bottom" constant="8" id="ehu-gk-LI6"/>
+                            <constraint firstItem="DzQ-mQ-r2V" firstAttribute="top" secondItem="reG-wo-oQF" secondAttribute="top" id="fVU-8v-3uZ"/>
+                            <constraint firstItem="DzQ-mQ-r2V" firstAttribute="trailing" secondItem="Mc9-5d-kra" secondAttribute="trailing" id="igt-WZ-tRs"/>
+                            <constraint firstItem="Mc9-5d-kra" firstAttribute="bottom" secondItem="z0d-M9-Pb3" secondAttribute="bottom" constant="8" id="loV-4L-HNT"/>
+                            <constraint firstItem="Mc9-5d-kra" firstAttribute="trailing" secondItem="z0d-M9-Pb3" secondAttribute="trailing" constant="16" id="mJ2-0c-HaB"/>
+                            <constraint firstItem="z0d-M9-Pb3" firstAttribute="leading" secondItem="Mc9-5d-kra" secondAttribute="leading" constant="16" id="nf4-cV-oc8"/>
+                            <constraint firstItem="DzQ-mQ-r2V" firstAttribute="leading" secondItem="Mc9-5d-kra" secondAttribute="leading" id="pDH-VU-pIy"/>
+                            <constraint firstItem="N6p-Ax-jpz" firstAttribute="leading" secondItem="Mc9-5d-kra" secondAttribute="leading" constant="16" id="sVt-Gy-cxF"/>
+                            <constraint firstItem="Mc9-5d-kra" firstAttribute="centerX" secondItem="ap5-d1-gKA" secondAttribute="centerX" id="viz-xj-U6G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mc9-5d-kra"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="imageDetails" destination="DzQ-mQ-r2V" id="jn7-dF-Tf2"/>
+                        <outlet property="releaseYearDetails" destination="iMF-OM-CZD" id="8Zj-jp-HrH"/>
+                        <outlet property="reviewsDetails" destination="N6p-Ax-jpz" id="og1-64-8i3"/>
                         <outlet property="titleDetails" destination="ap5-d1-gKA" id="iPn-bb-jAq"/>
                     </connections>
                 </viewController>
