@@ -1,34 +1,30 @@
 //
-//  HomeCollectionViewController.swift
+//  Favourite CollectionViewController.swift
 //  Movies
 //
-//  Created by ashraf on 3/31/19.
+//  Created by ashraf on 4/5/19.
 //  Copyright © 2019 ashraf. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
 
 private let reuseIdentifier = "Cell"
-var detailsViewController :DetailsViewController!
 
-class HomeCollectionViewController: UICollectionViewController {
+class FavouriteCollectionViewController: UICollectionViewController {
+    
+    var detailsViewController :DetailsViewController!
     
     var movies : [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         detailsViewController = (self.storyboard?.instantiateViewController(withIdentifier: "MovieDetails"))! as! DetailsViewController
-
-        let alamofire : AlamofireHandeller = AlamofireHandeller()
-        alamofire.getMovies { (movies) in
-            self.movies = movies
+        
+        let coreDataHandeller = CoreDataHandeller()
+        coreDataHandeller.getMovies { (m) in
+            self.movies = m
             self.collectionView?.reloadData()
         }
-    }
-    
-    func test() -> () {
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -53,5 +49,5 @@ class HomeCollectionViewController: UICollectionViewController {
         detailsViewController.movie = movies[indexPath.row]
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
- 
+    
 }
