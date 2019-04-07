@@ -1,6 +1,6 @@
 //
-//  Video.swift
-//  Trailer
+//  Trailer.swift
+//  Movie
 //
 //  Created by ashraf on 3/31/19.
 //  Copyright © 2019 ashraf. All rights reserved.
@@ -9,13 +9,10 @@
 import Foundation
 
 struct Trailer: Codable {
-    let id: String
-    let iso639_1: ISO639_1
-    let iso3166_1: ISO3166_1
-    let key, name: String
-    let site: Site
+    let id, iso639_1, iso3166_1, key: String
+    let name, site: String
     let size: Int
-    let type: TypeEnum
+    let type: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -25,21 +22,3 @@ struct Trailer: Codable {
     }
 }
 
-enum ISO3166_1: String, Codable {
-    case us = "US"
-}
-
-enum ISO639_1: String, Codable {
-    case en = "en"
-}
-
-enum Site: String, Codable {
-    case youTube = "YouTube"
-}
-
-enum TypeEnum: String, Codable {
-    case clip = "Clip"
-    case featurette = "Featurette"
-    case teaser = "Teaser"
-    case trailer = "Trailer"
-}
