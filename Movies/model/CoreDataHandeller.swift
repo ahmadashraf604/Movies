@@ -61,12 +61,27 @@ struct CoreDataHandeller {
                                           adult: (item.value(forKey: "adult") != nil),
                                           overview: (item.value(forKey: "overview")as! String?)!,
                                           releaseDate: (item.value(forKey: "releaseDate")as! String?)!)
-              
-                    movies.append(movie)
+                
+                movies.append(movie)
             }
             updateView(movies)
         }catch{
             print("error in feching data")
         }
+    }
+    
+    func isFavourite(movieId : Int) -> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteMovie")
+        do {
+            let fetchedMovies = try managedContext.fetch(fetchRequest)
+            for item in fetchedMovies{
+                if item.value(forKey: "id") as! Int == movieId {
+                    return true
+                }
+            }
+        }catch{
+            print("error in feching data")
+        }
+        return false
     }
 }

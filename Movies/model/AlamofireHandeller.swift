@@ -17,11 +17,21 @@ struct AlamofireHandeller {
     private let key = "api_key=e07070a3952fcf18a91b6d1aaf196f8c"
     private let videos = "/videos"
     private let reviews = "/reviews"
+    let topRated = "/top_rated"
+    let popular = "/popular"
     
-    public func getMovies(updateView : @escaping ([Movie]) -> Void){
-        let url = "\(basicURL)\(dicover)\(movie)?\(key)"
+    public func getMovies(sortingType :String, updateView : @escaping ([Movie]) -> Void){
+        
+        var url:String!
+        switch sortingType {
+        case popular:
+            url = "\(basicURL)\(movie)\(popular)?\(key)"
+        case topRated:
+            url = "\(basicURL)\(movie)\(topRated)?\(key)"
+        default:
+            url = "\(basicURL)\(dicover)\(movie)?\(key)"
+        }
         Alamofire.request(url).responseJSON { (responseObject) -> Void in
-            
             if responseObject.result.isSuccess {
                 let moviesData = try! JSONDecoder().decode(MoviesData.self, from: responseObject.data!)
                 updateView(moviesData.movies)

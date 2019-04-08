@@ -12,23 +12,17 @@ import SDWebImage
 private let reuseIdentifier = "Cell"
 var detailsViewController :DetailsViewController!
 
-class HomeCollectionViewController: UICollectionViewController {
+class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var movies : [Movie] = []
+    var alamofire : AlamofireHandeller!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         detailsViewController = (self.storyboard?.instantiateViewController(withIdentifier: "MovieDetails"))! as! DetailsViewController
-
-        let alamofire : AlamofireHandeller = AlamofireHandeller()
-        alamofire.getMovies { (movies) in
-            self.movies = movies
-            self.collectionView?.reloadData()
-        }
-    }
-    
-    func test() -> () {
+        alamofire  = AlamofireHandeller()
+        getMovie(sortingType: "")
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -48,10 +42,36 @@ class HomeCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         detailsViewController.movie = movies[indexPath.row]
+        detailsViewController.isFavourite = false
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
- 
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width/2, height: collectionView.bounds.width*3/4)
+    }
+    
+    @IBAction func editSort(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Sorting by", message: "select which type you want to sort movies by", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "most popular", style: UIAlertActionStyle.default, handler: {action in
+            self.getMovie(sortingType: self.alamofire.popular)
+        }))
+        alert.addAction(UIAlertAction(title: "highest rated", style: UIAlertActionStyle.default, handler: {action in
+            self.getMovie(sortingType: self.alamofire.topRated)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {action in
+            print("cancel")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func getMovie(sortingType : String){
+        alamofire.getMovies(sortingType: sortingType, updateView: { (movies) in
+            self.movies.removeAll()
+            self.movies = movies
+            self.collectionView?.reloadData()
+        })
+    }
+    
 }
