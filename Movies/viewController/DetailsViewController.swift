@@ -18,7 +18,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var releaseYearDetails: UILabel!
     @IBOutlet weak var imageDetails: UIImageView!
     @IBOutlet weak var reviewsDetails: UILabel!
-    @IBOutlet weak var tableViewDetails: UITableView!
+    @IBOutlet weak var tVDetails: UITableView!
     @IBOutlet weak var ratingDetails: CosmosView!
     
     
@@ -65,10 +65,11 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableViewDetails.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tVDetails.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if trailerAppear {
             cell.textLabel?.text = trailers[indexPath.row].name
             cell.detailTextLabel?.text = ""
+            print(trailers[indexPath.row].name)
         } else{
             cell.textLabel?.text = reviews[indexPath.row].author
             cell.detailTextLabel?.text = reviews[indexPath.row].content
@@ -109,7 +110,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let a = AlamofireHandeller()
         a.getTrailers(movieId: String(movie.id)) { (trailers) in
             self.trailers = trailers
-            self.tableViewDetails.reloadData()
+            self.tVDetails.reloadData()
         }
     }
     
@@ -117,7 +118,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let a = AlamofireHandeller()
         a.getReviews(movieId: String(self.movie.id)) { (reviews) in
             self.reviews = reviews
-            self.tableViewDetails.reloadData()
+            self.tVDetails.reloadData()
         }
     }
 }
