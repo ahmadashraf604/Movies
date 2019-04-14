@@ -70,14 +70,32 @@ struct CoreDataHandeller {
         }
     }
     
-    func isFavourite(movieId : Int) -> Bool{
+    func deleteMovie(movieId : Int) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteMovie")
+        fetchRequest.predicate = NSPredicate(format: "id = %d", movieId)
         do {
             let fetchedMovies = try managedContext.fetch(fetchRequest)
-            for item in fetchedMovies{
-                if item.value(forKey: "id") as! Int == movieId {
-                    return true
+            if fetchedMovies.count > 0 {
+                managedContext.delete(fetchedMovies[0])
+                do{
+                    try managedContext.save()
+                }catch{
+                    print("error in saving changes : deleting")
                 }
+            }
+        }catch{
+            print("error in feching data")
+        }
+        
+    }
+    
+    func isFavourite(movieId : Int) -> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteMovie")
+        fetchRequest.predicate = NSPredicate(format: "id = %d", movieId)
+        do {
+            let fetchedMovies = try managedContext.fetch(fetchRequest)
+            if fetchedMovies.count > 0 {
+                return true
             }
         }catch{
             print("error in feching data")

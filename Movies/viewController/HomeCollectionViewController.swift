@@ -44,7 +44,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         detailsViewController.movie = movies[indexPath.row]
-        detailsViewController.isFavourite = false
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     

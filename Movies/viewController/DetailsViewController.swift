@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Cosmos
 
-class DetailsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate{
+class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var btnTrailer: UIButton!
     @IBOutlet weak var btnReview: UIButton!
@@ -18,26 +19,38 @@ class DetailsViewController: UIViewController, UITableViewDataSource,UITableView
     @IBOutlet weak var imageDetails: UIImageView!
     @IBOutlet weak var reviewsDetails: UILabel!
     @IBOutlet weak var tableViewDetails: UITableView!
+    @IBOutlet weak var ratingDetails: CosmosView!
     
-    var trailers : [Trailer] = []
-    var reviews : [Review] = []
-    var trailerAppear : Bool = true
+    
     var movie : Movie!
-    var isFavourite : Bool!
+    private var trailers : [Trailer] = []
+    private var reviews : [Review] = []
+    private var trailerAppear : Bool = true
+    private var isFavourite : Bool!
+   private  var coreDataHandeller : CoreDataHandeller!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        coreDataHandeller = CoreDataHandeller()
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isFavourite = coreDataHandeller.isFavourite(movieId: movie.id)
         titleDetails.text = movie.title
         releaseYearDetails.text = movie.releaseDate
         reviewsDetails.text = movie.overview
+        ratingDetails.rating = (movie.voteAverage / 2)
+        // Show only fully filled stars
+        ratingDetails.settings.fillMode = .precise
         let imageUrl = URL(string: "https://image.tmdb.org/t/p/w185/\(movie.posterPath)")
         imageDetails.sd_setImage(with: imageUrl, completed: nil)
         self.getTrailers()
         if isFavourite {
-            btnFavourite.setBackgroundImage(UIImage(named : "heartFill"), for: .normal, barMetrics: .default)
+            btnFavourite.image = UIImage(named : "heartFill")
         }else{
-            btnFavourite.setBackgroundImage(UIImage(named : "heart"), for: .normal, barMetrics: .default)
+            btnFavourite.image = UIImage(named : "heart")
         }
     }
     
@@ -66,7 +79,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource,UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if trailerAppear {
             let  youtubeUrl = NSURL(string:"https://www.youtube.com/watch?v=\(trailers[indexPath.row].key)")!
-            UIApplication.shared.openURL(youtubeUrl as URL)
+            UIApplication.shared.canOpenURL(youtubeUrl as URL)
         }
         
     }
@@ -82,12 +95,12 @@ class DetailsViewController: UIViewController, UITableViewDataSource,UITableView
     }
     @IBAction func addFavourite(_ sender: Any) {
         if(!isFavourite){
-            CoreDataHandeller().addMovie(movie: movie)
-            btnFavourite.setBackgroundImage(UIImage(named : "heartFill"), for: .normal, barMetrics: .default)
+            coreDataHandeller.addMovie(movie: movie)
+            btnFavourite.image = UIImage(named : "heartFill")
             isFavourite = false
         }else{
-            
-            btnFavourite.setBackgroundImage(UIImage(named : "heartFill"), for: .normal, barMetrics: .default)
+            coreDataHandeller.deleteMovie(movieId: movie.id)
+            btnFavourite.image = UIImage(named : "heart")
             isFavourite = true
         }
     }
